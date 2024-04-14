@@ -23,6 +23,7 @@ import CandidateJobSaved from './pages/CandidateJobSaved';
 import CandidateProfile from './pages/CandidateProfile';
 import CandidateChat from './pages/CandidateChat';
 import CandidateContact from './pages/CandidateContact';
+import CandidateDetails from './pages/candidate_details';
 
 import OfficerDashboard from './pages/OfficerDashboard';
 import OfficerAbout from './pages/OfficerAbout';
@@ -75,6 +76,7 @@ import InstituteChat from './pages/InstituteChat';
 import InstituteAddJob from './pages/InstituteAddJob';
 import InstituteEditJob from './pages/InstituteEditJob';
 import Institutecontact from './pages/Institutecontact';
+import JobDetails from './pages/job_details';
 
 import Blog from './pages/Blog';
 import RegisterEmailVerification from './pages/RegisterEmailVerification';
@@ -115,6 +117,8 @@ function App() {
           <Route path="/candidate_profile" element={<CandidateProfile />} />
           <Route path="/candidate_chat" element={<CandidateChat />} />
           <Route path="/candidate_contact" element={<CandidateContact />} />
+          <Route path="/candidate_details/:candidateId" element={<CandidateDetails />} />
+
 
           {/* Officer Routes */}
           <Route path="/officer_dashboard" element={<OfficerDashboard />} />
@@ -171,6 +175,7 @@ function App() {
           <Route path="/institute_add_job" element={<InstituteAddJob />} />
           <Route path="/institute_edit_job" element={<InstituteEditJob />} />
           <Route path="/institute_contact" element={<Institutecontact />} />
+          <Route path="/job_details/:jobId" element={<JobDetails />} />
 
 
           {/* Blog Routes */}

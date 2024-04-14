@@ -79,9 +79,8 @@ function InstituteProfile() {
         <Fragment>
             <header>
                 <div className="header-container">
-                    <h1>Institute Profile</h1>
+                    <h1>Profile</h1>
                     <InstituteHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
                 </div>
             </header>
 

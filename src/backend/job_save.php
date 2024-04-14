@@ -15,56 +15,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Assuming you have a way to identify the candidate (e.g., using session, authentication, etc.)
     $candidateID = $userID;
 
-    // Check if the job is already saved by the candidate
-    $query = "SELECT * FROM `application` WHERE `positionID` = :jobID AND `candidateID` = :candidateID";
+    $sqlCheckExisting = "SELECT * FROM application WHERE positionID=:jobID AND candidateID=:candidateID AND status='saved'";
+    $stmtCheckExisting = $connection->prepare($sqlCheckExisting);
+    $stmtCheckExisting->bindParam(':jobID', $jobID);
+    $stmtCheckExisting->bindParam(':candidateID', $candidateID);
+    $stmtCheckExisting->execute();
+    $result = $stmtCheckExisting->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        // User already exists, return an error response
+        $response = array('status' => 'error', 'message' => 'You already saved the job.');
+        echo json_encode($response);
+        $stmtCheckExisting->closeCursor();
+        exit;
+    }
+    $sqlCheckExisting = "SELECT * FROM application WHERE positionID=:jobID AND candidateID=:candidateID AND status='applied'";
+    $stmtCheckExisting = $connection->prepare($sqlCheckExisting);
+    $stmtCheckExisting->bindParam(':jobID', $jobID);
+    $stmtCheckExisting->bindParam(':candidateID', $candidateID);
+    $stmtCheckExisting->execute();
+    $result = $stmtCheckExisting->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        // User already exists, return an error response
+        $response = array('status' => 'error', 'message' => 'You already applied for the job.');
+        echo json_encode($response);
+        $stmtCheckExisting->closeCursor();
+        exit;
+    }
+
+
+    $sqlCheckExisting = "SELECT * FROM interview WHERE positionID=:jobID AND candidateID=:candidateID";
+    $stmtCheckExisting = $connection->prepare($sqlCheckExisting);
+    $stmtCheckExisting->bindParam(':jobID', $jobID);
+    $stmtCheckExisting->bindParam(':candidateID', $candidateID);
+    $stmtCheckExisting->execute();
+    $result = $stmtCheckExisting->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        // User already exists, return an error response
+        $response = array('status' => 'error', 'message' => 'You already applied and selected for interview.');
+        echo json_encode($response);
+        $stmtCheckExisting->closeCursor();
+        exit;
+    }
+    
+    // The job is not saved, insert a new record
+    $query = "INSERT INTO `Application` (`positionID`, `candidateID`, `status`, `dateApplied`) 
+                VALUES (:jobID, :candidateID, 'saved', NOW())";
     $stmt = $connection->prepare($query);
     $stmt->bindValue(':jobID', $jobID);
     $stmt->bindValue(':candidateID', $candidateID);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
 
-    if (count($result) > 0) {
-        // The job is already saved, update the existing record
-        $query = "UPDATE `application` SET `Bookmark` = 1, `Status` = 'saved', `Date_Applied` = NOW(), `Field` = 'Type' 
-                  WHERE `JobID` = :jobID AND `CandidateID` = :candidateID";
-        $stmt = $connection->prepare($query);
-        $stmt->bindValue(':jobID', $jobID);
-        $stmt->bindValue(':candidateID', $candidateID);
-
-        if ($stmt->execute()) {
-            // The job is saved successfully
-            $response = array(
-                'status' => 'success',
-                'message' => 'Job Saved Successfully',
-            );
-        } else {
-            // An error occurred while saving the job
-            $response = array(
-                'status' => 'error',
-                'message' => 'Failed to save the job',
-            );
-        }
+    if ($stmt->execute()) {
+        // The job is saved successfully
+        $response = array(
+            'status' => 'success',
+            'message' => 'Job Saved Successfully',
+        );
     } else {
-        // The job is not saved, insert a new record
-        $query = "INSERT INTO `Application` (`JobID`, `CandidateID`, `Bookmark`, `Status`, `Date_Applied`, `Field`) 
-                  VALUES (:jobID, :candidateID, 1, 'saved', NOW(), 'Type')";
-        $stmt = $connection->prepare($query);
-        $stmt->bindValue(':jobID', $jobID);
-        $stmt->bindValue(':candidateID', $candidateID);
-
-        if ($stmt->execute()) {
-            // The job is saved successfully
-            $response = array(
-                'status' => 'success',
-                'message' => 'Job Saved Successfully',
-            );
-        } else {
-            // An error occurred while saving the job
-            $response = array(
-                'status' => 'error',
-                'message' => 'Failed to save the job',
-            );
-        }
+        // An error occurred while saving the job
+        $response = array(
+            'status' => 'error',
+            'message' => 'Failed to save the job',
+        );
     }
 
     $stmt->closeCursor();

@@ -21,94 +21,15 @@ function AdminDashboard() {
 		<Fragment>
 			<header>
 				<div className="header-container">
-					<h1>Admin Dashboard</h1>
+					<h1>Dashboard</h1>
 					<AdminHeader />
-					<img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
 				</div>
 			</header>
 
 			<main>
 				{/* <!-- Dahsboard Content --> */}
 				<section id="dashboard">
-					<div className="row">
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/admin_jobposted" style={{ color: 'black' }}>Jobs</Link></h1>
-									<span className="count">54</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/admin_application_status" style={{ color: 'black' }}>Application Status</Link></h1>
-									<span className="count">336</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/admin_application_matches" style={{ color: 'black' }}>Application Matches</Link></h1>
-									<span className="count">6</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/admin_candidates" style={{ color: 'black' }}>Candidates</Link></h1>
-									<span className="count">786</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/admin_institution" style={{ color: 'black' }}>Institutes</Link></h1>
-									<span className="count">228</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/admin_recruiter" style={{ color: 'black' }}>Recruiters</Link></h1>
-									<span className="count">55</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/admin_dei_officer" style={{ color: 'black' }}>DEI Officers</Link></h1>
-									<span className="count">12</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-					</div>
+					
 				</section>
 			</main>
 

@@ -10,7 +10,6 @@ function Index() {
                 <div className="header-container">
                     <h1>URM Application</h1>
                     <IndexHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
                 </div>
             </header>
             <main>

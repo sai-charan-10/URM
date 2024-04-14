@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userID = $data['userId'];
 
     // Fetch the job applications for the given userId
-    $query = "SELECT * FROM `application` WHERE `candidateID` = :userID";
+    $query = "SELECT a.applicationID, a.candidateID, a.positionID, a.status, a.dateApplied, i.name, p.title, p.description FROM application a, academicinstitution i, position p WHERE a.candidateID = :userID AND a.status = 'applied' AND a.positionID=p.positionID AND p.institutionID=i.institutionID";
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':userID', $userID);
 

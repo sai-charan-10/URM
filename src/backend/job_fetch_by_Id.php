@@ -1,40 +1,35 @@
 <?php
-// job_fetch_by_Id.php
-
-// Include your database connection file here
+// db_connection.php - Include your database connection file here
 include 'db_connection.php';
 
-// Assuming your database connection is established, you can proceed with fetching job details
-if ($_SERVER['REQUEST_METHOD'] === 'GET' || $_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get job ID from the Axios POST request in the React app
+// Assuming your database connection is established, you can proceed to fetch the job data
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Fetch job data from the database
     $data = json_decode(file_get_contents('php://input'), true);
-    $jobID = $_GET['id'];
-    // Validate the received job ID here if needed
-
-    // Fetch job data from the `position` table with the given job ID
-    $sql = "SELECT * FROM `position` WHERE `positionID` = :jobID";
+    $positionID = $data['id'];
+    $sql = "SELECT * FROM position WHERE positionID=:positionID";
     $stmt = $connection->prepare($sql);
-
-    // Bind parameters
-    $stmt->bindValue(':jobID', $jobID, PDO::PARAM_INT);
-
-    // Execute the query
-    $stmt->execute();
-
-    // Fetch the result
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Output as JSON
-    header('Content-Type: application/json');
-    echo json_encode($result);
+    $stmt->bindParam(':positionID', $positionID);
+    if ($stmt->execute()) {
+        $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $response = array(
+            'status' => 'success',
+            'details' => $jobs,
+        );
+    }
+    else{
+        $response = array(
+            'status' => 'error',
+            'message' => 'Failed to fetch job applications',
+        );
+    }
     $stmt->closeCursor();
-    exit;
 } else {
-    // Handle other HTTP methods or return an error response
-    $response = ['error' => 'Invalid request method'];
-    
-    // Output as JSON
-    header('Content-Type: application/json');
-    echo json_encode($response);
+    $response = array(
+        'status' => 'error',
+        'message' => 'Invalid request method',
+    );
 }
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

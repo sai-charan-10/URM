@@ -3,12 +3,15 @@
 include 'db_connection.php';
 
 // Function to fetch job data from the database and return as JSON
-function getJobDataFromDatabase() {
+function getJobDataFromDatabase($userID) {
     global $connection;
 
     // Fetch job data from the `Job` table
-    $sql = "SELECT * FROM `position`";
+    $sql = "SELECT p.positionID, p.title, p.description, p.fieldOfStudy, p.qualification, p.salary, p.location, i.name
+            FROM position p, academicinstitution i
+            WHERE p.institutionID=i.institutionID AND i.institutionID=:userID";
     $stmt = $connection->prepare($sql);
+    $stmt->bindValue(':userID', $userID);
     $stmt->execute();
     $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -18,10 +21,12 @@ function getJobDataFromDatabase() {
 }
 
 // Assuming your database connection is established, you can proceed to fetch the job data
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $userID = $data['userId'];
         // Fetch job data from the database
-        $jobs = getJobDataFromDatabase();
+        $jobs = getJobDataFromDatabase($userID);
 
         // Return the job data as JSON response
         $response = array('status' => 'success', 'jobs' => $jobs);

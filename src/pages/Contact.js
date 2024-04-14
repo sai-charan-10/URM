@@ -48,7 +48,12 @@ function Contact() {
     };
     return (
         <Fragment>
-
+            <header>
+                <div className="header-container">
+                    <h1>URM Application</h1>
+                    <IndexHeader />
+                </div>
+            </header>
             <main>
                 {/* <!-- Contact Content --> */}
                 <section id="contact" className="contact-section">

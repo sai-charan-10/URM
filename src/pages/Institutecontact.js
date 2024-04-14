@@ -52,7 +52,6 @@ function Institutecontact() {
                 <div className="header-container">
                     <h1>Contact</h1>
                     <InstituteHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
                 </div>
             </header>
             <main>

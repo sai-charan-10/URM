@@ -16,7 +16,7 @@ function OfficerApproval() {
         event.preventDefault();
 
         // Call the API to fetch the job data
-        axios.get('E:/Web_Data_Management/Project_Code/wdm_project/backend/job_fetch.php')
+        axios.get('http://localhost/job_fetch.php')
             .then((response) => {
                 if (response.data.status === 'success') {
                     // Job data fetched successfully, update the jobs state
@@ -41,7 +41,7 @@ function OfficerApproval() {
         };
 
         axios
-            .post('E:/Web_Data_Management/Project_Code/wdm_project/backend/job_approval.php', data)
+            .post('http://localhost/job_approval.php', data)
             .then((response) => {
                 if (response.data.status === 'success') {
                     // Job applied successfully, update the jobs state or show a success message
@@ -85,22 +85,18 @@ function OfficerApproval() {
                                     <th>Location</th>
                                     <th>Qualifications</th>
                                     <th>Salary</th>
-                                    <th>Deadline</th>
-                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {jobs.map((job) => (
-                                    <tr key={job.JobID}>
+                                    <tr key={job.positionID}>
                                         <td>{job.Title}</td>
-                                        <td>{job.Field_Of_Study}</td>
-                                        <td>{job.Description}</td>
-                                        <td>{job.Location}</td>
-                                        <td>{job.Qualification}</td>
-                                        <td>{job.Salary}</td>
-                                        <td>{job.EndDate}</td>
-                                        <td>{job.Status}</td>
+                                        <td>{job.fieldOfStudy}</td>
+                                        <td>{job.description}</td>
+                                        <td>{job.location}</td>
+                                        <td>{job.qualification}</td>
+                                        <td>{job.salary}</td>
                                         <td>
                                             <div className="job-actions">
                                                 <button type="button" onClick={() => handleApproval(job.JobID, userID)}>Approve</button>

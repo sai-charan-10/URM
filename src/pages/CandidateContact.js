@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import CandidateHeader from './CandidateHeader';
 import IndexHeader from './IndexHeader';
 import IndexFooter from './IndexFooter';
 import axios from 'axios';
@@ -48,7 +49,12 @@ function CandidateContact() {
     };
     return (
         <Fragment>
-
+            <header>
+                <div className="header-container">
+                    <h1>Contact</h1>
+                    <CandidateHeader />
+                </div>
+            </header>
             <main>
                 {/* <!-- Contact Content --> */}
                 <section id="contact" className="contact-section">

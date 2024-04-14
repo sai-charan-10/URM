@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CandidateHeader from './CandidateHeader';
 import IndexFooter from './IndexFooter';
@@ -14,11 +14,9 @@ function CandidateJobSearch() {
     // State to store the job data received from the API
     const [jobs, setJobs] = useState([]);
 
-    const handlefetchJob = (event) => {
-        event.preventDefault();
-
+    useEffect(() => {
         // Call the API to fetch the job data
-        axios.get('http://localhost/job_fetch.php')
+        axios.get('http://localhost/candidate_job_fetch.php')
             .then((response) => {
                 if (response.data.status === 'success') {
                     // Job data fetched successfully, update the jobs state
@@ -31,8 +29,7 @@ function CandidateJobSearch() {
             .catch((error) => {
                 console.error('Error:', error);
             });
-    }
-
+    }, []);
     //handle Apply
     const handleApply = (jobID, userID) => {
         // Call the API to apply for the job with the given jobID and userID
@@ -51,7 +48,7 @@ function CandidateJobSearch() {
                     alert('Job Applied Successfully');
                 } else {
                     // Handle the case where no job data is found or there's an error
-                    console.error(response.data.message);
+                    alert(response.data.message);
                 }
             })
             .catch((error) => {
@@ -75,7 +72,7 @@ function CandidateJobSearch() {
                     alert("Job Saved Successfully");
                 } else {
                     // Handle the case where no job data is found or there's an error
-                    console.error(response.data.message);
+                    alert(response.data.message);
                 }
 
             })
@@ -90,26 +87,22 @@ function CandidateJobSearch() {
 
             <header>
                 <div className="header-container">
-                    <h1>Candidate Job Search</h1>
+                    <h1>Jobs</h1>
                     <CandidateHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
                 </div>
             </header>
 
             <main>
                 {/* <!-- Jobs Applied Content --> */}
                 <section id="jobsearch" className="tile">
-                    <div className="search">
-                        <input type="submit" value="Fetch Job" className="cta-button" onClick={handlefetchJob} />
-                    </div>
 
                     {/* <!-- Job Applied Table --> */}
                     <div className="job-applied">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Job ID</th>
                                     <th>Job Name</th>
+                                    <th>Institution</th>
                                     <th>Department</th>
                                     <th>Job Description</th>
                                     <th>Location</th>
@@ -121,8 +114,8 @@ function CandidateJobSearch() {
                             <tbody>
                                 {jobs.map((job) => (
                                     <tr key={job.positionID}>
-                                        <td>{job.positionID}</td>
                                         <td>{job.title}</td>
+                                        <td>{job.name}</td>
                                         <td>{job.fieldOfStudy}</td>
                                         <td>{job.description}</td>
                                         <td>{job.location}</td>

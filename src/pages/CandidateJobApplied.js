@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import CandidateHeader from './CandidateHeader';
 import IndexFooter from './IndexFooter';
@@ -13,9 +14,7 @@ function CandidateJobApplied() {
     // State to store the job data received from the API
     const [jobs, setJobs] = useState([]);
 
-    const handleApplication = (event) => {
-        event.preventDefault();
-
+    useEffect(() => {
         const data = {
             userId: userID,
         };
@@ -35,34 +34,30 @@ function CandidateJobApplied() {
             .catch((error) => {
                 console.error('Error:', error);
             });
-    }
-
-
+    }, []);
     return (
         <Fragment>
 
             <header>
                 <div className="header-container">
-                    <h1>Applied Jobs</h1>
+                    <h1>Applications</h1>
                     <CandidateHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
                 </div>
             </header>
 
             <main>
                 {/* <!-- Jobs Applied Content --> */}
                 <section id="jobsearch" className="tile">
-                    <div className="search">
-                        <input type="submit" value="Fetch Applications" className="cta-button" onClick={handleApplication} />
-                    </div>
+                    
 
                     {/* <!-- Job Applied Table --> */}
                     <div className="job-applied">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>JobID</th>
-                                    <th>CandidateID</th>
+                                    <th>Job Title</th>
+                                    <th>Institution</th>
+                                    <th>Description</th>
                                     <th>Status</th>
                                     <th>Date_Applied</th>
                                 </tr>
@@ -70,8 +65,9 @@ function CandidateJobApplied() {
                             <tbody>
                                 {jobs.map((job) => (
                                     <tr key={job.positionID}>
-                                        <td>{job.positionID}</td>
-                                        <td>{job.candidateID}</td>
+                                        <td>{job.title}</td>
+                                        <td>{job.name}</td>
+                                        <td>{job.description}</td>
                                         <td>{job.status}</td>
                                         <td>{job.dateApplied}</td>
                                     </tr>

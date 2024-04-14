@@ -50,9 +50,6 @@ function Login() {
                             case 'institute':
                                 window.localStorage.setItem('userId', userData['institutionID']);
                                 break;
-                            case 'recruiter':
-                                window.localStorage.setItem('userId', userData['recruiterID']);
-                                break;
                             case 'officer':
                                 window.localStorage.setItem('userId', userData['officerID']);
                                 break;
@@ -69,9 +66,6 @@ function Login() {
                                 break;
                             case 'institute':
                                 history('/institute_dashboard');
-                                break;
-                            case 'recruiter':
-                                history('/recruiter_dashboard');
                                 break;
                             case 'officer':
                                 history('/officer_dashboard');
@@ -101,7 +95,6 @@ function Login() {
                 <div className="header-container">
                     <h1>Login</h1>
                     <IndexHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
                 </div>
             </header>
 
@@ -120,7 +113,6 @@ function Login() {
                                             <option value="">Select login type</option>
                                             <option value="candidate">Candidate</option>
                                             <option value="institute">Institute</option>
-                                            <option value="recruiter">Recruiter</option>
                                             <option value="officer">Officer</option>
                                             <option value="admin">Admin</option>
                                         </select>

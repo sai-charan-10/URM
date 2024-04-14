@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import IndexHeader from './IndexHeader';
-import IndexFooter from './IndexFooter';
+import OfficerHeader from './OfficerHeader';
 import axios from 'axios';
 
 function OfficerContact() {
@@ -48,7 +47,12 @@ function OfficerContact() {
     };
     return (
         <Fragment>
-
+            <header>
+                <div className="header-container">
+                    <h1>Officer Profile</h1>
+                    <OfficerHeader />
+                </div>
+            </header>
             <main>
                 {/* <!-- Contact Content --> */}
                 <section id="contact" className="contact-section">

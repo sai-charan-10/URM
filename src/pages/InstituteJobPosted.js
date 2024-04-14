@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function InstituteJobPosted() {
     let history = useNavigate();
-
+    const userID = window.localStorage.getItem("userId");
     // State to store the job data received from the API
     const [jobs, setJobs] = useState([]);
 
@@ -37,7 +37,7 @@ function InstituteJobPosted() {
         event.preventDefault();
 
         // Call the API to fetch the job data
-        axios.get('http://localhost/job_fetch.php')
+        axios.post('http://localhost/job_fetch.php', {userId:userID})
             .then((response) => {
                 if (response.data.status === 'success') {
                     // Job data fetched successfully, update the jobs state
@@ -80,7 +80,6 @@ function InstituteJobPosted() {
                 <div className="header-container">
                     <h1>Job Posted</h1>
                     <InstituteHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
                 </div>
             </header>
 

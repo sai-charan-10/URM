@@ -73,7 +73,6 @@ function OfficerProfile() {
                 <div className="header-container">
                     <h1>Officer Profile</h1>
                     <OfficerHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt="" />
                 </div>
             </header>
 

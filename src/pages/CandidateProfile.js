@@ -40,7 +40,7 @@ function CandidateProfile() {
         formData.append('pIsURM', profileIsURM)
         formData.append('pRace', profileRace)
         formData.append('pResume', profileResume)
-
+        console.log(formData);
         const response = await axios.post("http://localhost/update_profile.php", formData, {
             headers: { 'Content-Type': "multipart/form-data" },
         })
@@ -65,7 +65,6 @@ function CandidateProfile() {
             .then((response) => {
                 if (response.data.status === 'success') {
                     alert('Profile Data fetched successfully', response.data.profileData)
-                    console.log('Data:', response.data.profileData['name'])
 
                     setProfileName(response.data.profileData['name']);
                     setProfileEmail(response.data.profileData['email']);
@@ -99,9 +98,8 @@ function CandidateProfile() {
         <Fragment>
             <header>
                 <div className="header-container">
-                    <h1>Candidate Profile</h1>
+                    <h1>Profile</h1>
                     <CandidateHeader />
-                    <img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
                 </div>
             </header>
 

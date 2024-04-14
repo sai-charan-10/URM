@@ -1,76 +1,116 @@
-import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useState, useEffect } from 'react';
 import OfficerHeader from './OfficerHeader';
 import IndexFooter from './IndexFooter';
-import BarChart from '../charts/BarChart';
-import { OfficerDashboardData } from './OfficerDashboardData';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function OfficerDashboard() {
 
-	const [officerDashboardData, setOfficerDashboardData] = useState({
-		labels: OfficerDashboardData.map((data) => data.Race),
-		datasets: [{
-			label: "Students",
-			data: OfficerDashboardData.map((data) => data.Candidates),
+	const userID = window.localStorage.getItem("userId");
+	let history = useNavigate();
 
-		}]
-	})
+	// State to store the job data received from the API
+	const [jobs, setJobs] = useState([]);
 
+	useEffect(() => {
 
+		// Call the API to fetch the job data
+		axios.post('http://localhost/officer_application_fetch.php', { userId:userID })
+			.then((response) => {
+				if (response.data.status === 'success') {
+					// Job data fetched successfully, update the jobs state
+					setJobs(response.data.jobs);
+					
+				} else {
+					// Handle the case where no job data is found or there's an error
+					console.error(response.data.message);
+				}
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+	}, []);
+	console.log(jobs);
+	//handle Apply
+	const handleApproval = (jobID, candidateID, instituteID) => {
+		// Call the API to apply for the job with the given jobID and userID
+
+		const data = {
+			jobId: jobID,
+			candidateId: candidateID,
+			instituteId: instituteID,
+		};
+
+		axios.post('http://localhost/job_approval.php', data)
+			.then((response) => {
+				if (response.data.status === 'success') {
+					// Job applied successfully, update the jobs state or show a success message
+					alert('Recruited');
+					setJobs(prevJobs => prevJobs.filter(job => job.positionID !== jobID));
+				} else {
+					// Handle the case where no job data is found or there's an error
+					console.error(response.data.message);
+				}
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+		axios.post('http://localhost/application_delete.php', data)
+			.then((response) => {
+				if (response.data.status === 'success') {
+					history('/officer_dashboard');
+				} else {
+					// Handle the case where no job data is found or there's an error
+					console.error(response.data.message);
+				}
+			});
+	};
 	return (
 		<Fragment>
 			<header>
 				<div className="header-container">
-					<h1>Officer Dashboard</h1>
+					<h1>Dashboard</h1>
 					<OfficerHeader />
-					<img src="assets/images/uta_logo.png" className="user-pic" alt=""></img>
 				</div>
 			</header>
 
 			<main>
-				{/* <!--Begin Diversity Matrics Content--> */}
+                {/* <!-- Jobs Applied Content --> */}
+                <section id="jobsearch" className="tile">
 
-				{/* <!-- Dahsboard Content --> */}
-				<section id="dashboard">
-					<h1>Diversity Metrics</h1>
-					<div className="row">
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/officer_jobmatched" style={{ color: 'black' }}>Jobs Matched under DEI criteria</Link></h1>
-									<span className="count">150</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/officer_candidates" style={{ color: 'black' }}>Interested Candidates</Link></h1>
-									<span className="count">15</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-						<article className="style1">
-							<div className="graph-container">
-								<div className="graph-info">
-									<h1><Link to="/officer_recruiter" style={{ color: 'black' }}>Total Number of Recruiters</Link></h1>
-									<span className="count">35</span>
-								</div>
-								<div className="graph">
-									<BarChart chartData={officerDashboardData} />
-								</div>
-							</div>
-						</article>
-					</div>
-
-				</section>
-			</main>
+                    {/* <!-- Job Applied Table --> */}
+                    <div className="job-applied">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Job Name</th>
+                                    <th>Department</th>
+                                    <th>Job Description</th>
+                                    <th>Qualification</th>
+									<th>Candidate</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {jobs.map((job) => (
+                                    <tr key={job.positionID}>
+                                        <td>{job.title}</td>
+                                        <td>{job.fieldOfStudy}</td>
+                                        <td>{job.description}</td>
+                                        <td>{job.qualification}</td>
+										<td>{job.name}</td>
+                                        <td>
+                                            <div className="job-actions">
+                                                <button type="button" onClick={() => handleApproval(job.positionID, job.candidateID, job.institutionID)}>Approve</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
 
 			<IndexFooter />
 		</Fragment>

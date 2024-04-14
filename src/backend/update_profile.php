@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resumeFileName = basename($_FILES['pResume']['name']);
 
     // Set the paths to store the uploaded files
-    $resumePath = '../uploads/resumes/';
+    $resumePath = 'uploads/resumes/';
 
     $resumeTargetPath = $resumePath . $resumeFileName;
 
