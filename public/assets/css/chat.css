@@ -1,19 +1,9 @@
-/* 
-Gunasekharan, Jayasurya     - 1002060437
-Janjanam, Karthikeya        - 1002115909
-Navadiya, Meet              - 1002040672
-Jillella, Sai Charan Reddy  - 1002071745
-Kanna, Karthik Reddy        - 1002086508 
-*/
-
-
 
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("../images/students.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center bottom 15%;
@@ -28,18 +18,18 @@ body {
     padding: 20px;
 }
 
-/* Header Styles */
+/*Header Styles */
 header {
-    background-color: rgba(0, 74, 153, 0.8);
-    color: #fff;
+    background-color: rgba(194, 173, 173, 0.7);
+    
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
 }
 
 .header-container {
+    color: #000000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,7 +39,7 @@ header {
 h1 {
     margin: 0;
     font-size: 30px;
-    color: #fff;
+    color: #000000;
 }
 
 nav ul {
@@ -65,7 +55,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: #000000;
     padding: 5px;
     font-size: 16px;
     transition: color 0.3s ease;
@@ -77,581 +67,293 @@ nav ul li a:hover {
     font-size: 18px;
 }
 
+/* Footer styling */
+footer {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #000000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(194, 173, 173, 0.7);
+    z-index: 1;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 
-/* Main Styles */
+    margin-top: -40px;
+}
+
+/* Main content styling */
 main {
     margin-top: 80px;
     padding: 20px;
     flex-grow: 1;
     background-color: transparent;
 }
-
-/* Homepage Styles */
 #chat {
-    padding: 20px;
-    background-color: rgba(179, 179, 179, 0.7);
-    -webkit-backdrop-filter: blur(10px);
+    padding: 100px;
+    background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     margin-bottom: 20px;
-    /* Add margin-bottom to create a gap */
-}
-
-#chat h2 {
-    color: #272727;
-    font-size: 24px;
-    margin-top: 0;
 }
 
 #chat p {
-    margin-bottom: 20px;
+    margin-top: 0px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
     line-height: 1.5;
-    color: #fff;
+    color: #000000;
 }
-
-/* Goal Styles */
-#chat {
-    padding: 20px;
-    background-color: rgba(179, 179, 179, 0.7);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-}
-
-.tile-container {
+.container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
-
-article {
-    width: 300px;
-    margin: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-article .image {
-    position: relative;
-    overflow: hidden;
-}
-
-article img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-article:hover img {
-    transform: scale(1.1);
-}
-
-article .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-}
-
-article:hover .overlay {
-    opacity: 1;
-}
-
-.text {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: #fff;
-    text-align: left;
-    margin: 0;
-    font-size: 24px;
-    opacity: 1;
-    z-index: 2;
-}
-
-article h2 {
-    color: #fff;
-    text-align: center;
-    margin: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-article p {
-    color: #fff;
-    text-align: center;
-    margin: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-article:hover p {
-    opacity: 1;
-}
-
-/* Chat Section Styles */
-
-/* Add these styles to make the chat section look better */
-
-/* Main chat box */
 #chat {
     text-align: center;
-    padding: 20px;
 }
 
 .chat-box {
-    max-width: 1000px;
+    max-width: 1500px;
     margin: 0 auto;
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
 }
 
-/* People list */
 .people-list {
-    width: 30%;
+    color: #000000;
     float: left;
-    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    width: 250px;
+    height: 488px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.people-list .search {
+#userList {
+    /*
+    width: 80%;
+    max-height: 480px;
+    overflow: auto;
+    */
+    margin-bottom: 20px;
+}
+
+
+#searchInput {
+    /*
+    margin-top: 10px;
+    font-size: medium;
     padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+    */
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 
-.people-list .search input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    border-radius: 0;
-    background-color: #f9f9f9;
+#userListItems {
+    list-style-type: none;
+    padding: 0;
+    
 }
 
-.people-list .list {
+.people-list ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
-.people-list .list li {
+.people-list li {
+    text-decoration: solid;
+    background-color: rgb(213, 222, 255);
+    text-align: start;
+    padding: 10px;
+    border-radius: 5px;
     padding: 10px;
     cursor: pointer;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ffffff;
 }
 
-.people-list .list li:last-child {
-    border-bottom: none;
-}
 
-.people-list .list li:hover {
-    background-color: #f0f0f0;
-}
+/* CSS for the button */
 
-/* Chat messages */
+  
+  .button-container button {
+    font-size: medium;
+    font-weight: bold; /* Make the font bold */
+    padding: 0; /* Remove padding */
+    background-color: transparent; /* Set background color to transparent */
+    color: #000000; /* Set text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Set cursor to pointer on hover */
+    transition: color 0.3s ease; /* Add transition effect */
+  }
+  
+  .button-container button:hover {
+    color: #0056b3; /* Change text color on hover */
+  }
+  
+  
+
 .chat {
-    width: 70%;
-    float: left;
-    background-color: #fff;
+    flex-grow: 1;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .chat .chat-header {
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ccc;
+    height: 65px;
+    width: 100%;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: #ffffff;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.chat .chat-header .heading{
+    text-align: center;
+    align-items: center;
+    padding-left: 220px;
 }
 
-.chat .chat-header img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
+
+
 
 .chat .chat-about {
-    float: left;
+    color: #000000;
+    margin-top: 20px;
+    border-radius: 10px;
+    height: 40px;
+    background-color: #cccccc;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    flex: 1;
 }
 
-.chat .chat-with {
+.chat .chat-about .chat-with {
+    font-size: 30px;
+    color: #000000;
+    background-color: #cccccc;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
     font-weight: bold;
+    margin-top: -5px;
 }
 
-.chat .chat-num-messages {
-    color: #888;
+.chat .chat-about .chat-num-messages {
+    font-size: 12px;
+    color: #999;
 }
 
 .chat .chat-history {
-    padding: 10px;
+    text-align: left;
+    color: #000000;
+    background-color: #ffffff;
+    height: 1000px;
+    max-height: 300px;
     overflow-y: auto;
-    max-height: 400px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .chat .chat-history ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
+.message-data-name {
+    margin-left: 5px;
+    font-size: 18px;
+    color: #000000;
+}
+.sendername {
+    padding-right: 300px;
+}
+.timestamp {
+    text-align: right;
+    font-size: 15px;
+    color: #000000;
+    align-items:end;
+}
+.message-data{
+    font-size: x-small;
+    text-align: start;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #efe1ff;
+}
+  
+
 
 .chat .chat-history li {
     margin-bottom: 10px;
 }
 
-.chat .chat-history .clearfix {
-    overflow: auto;
-}
-
-.chat .chat-history .message-data {
-    float: right;
-    text-align: right;
-}
-
-.chat .chat-history .message-data span {
-    color: #888;
-    font-size: 12px;
-}
-
-.chat .chat-history .message-data-name {
-    color: #333;
-    margin-right: 6px;
-    font-weight: bold;
-}
-
-.chat .chat-history .message {
-    max-width: 80%;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.chat .chat-history .my-message {
-    background-color: #007bff;
-    color: #000000;
-}
-
-.chat .chat-history .other-message {
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-/* Add this style to make the people list scrollable */
-
-.people-list {
-    width: 30%;
-    float: left;
-    background-color: #f9f9f9;
-    max-height: 706px;
-    /* Set the maximum height for the list container */
-    overflow-y: auto;
-    /* Enable vertical scrolling if the content exceeds the container height */
-}
-
-.people-list .list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.people-list .list li {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ccc;
-}
-
-.people-list .list li:last-child {
-    border-bottom: none;
-}
-
-.people-list .list li:hover {
-    background-color: #f0f0f0;
-}
-
-
-/* Chat message input */
 .chat .chat-message {
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-top: 1px solid #ccc;
+    margin-top: 10px;
 }
 
-.chat .chat-message textarea {
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-}
-
-.chat .chat-message button {
-    margin-top: 5px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #000000;
-    cursor: pointer;
-}
-
-.container {
-    margin: 0 auto;
-    width: 1000px;
-    background: #444753;
-    border-radius: 5px;
-}
-
-.people-list {
-    width: 260px;
-    float: left;
-
-    .search {
-        padding: 20px;
-    }
-
-    input {
-        border-radius: 3px;
-        border: none;
-        padding: 14px;
-        color: white;
-        background: #6A6C75;
-        width: 90%;
-        font-size: 14px;
-    }
-
-    .fa-search {
-        position: relative;
-        left: -25px;
-    }
-
-    ul {
-        padding: 20px;
-        height: 770px;
-
-
-
-
-        li {
-            padding-bottom: 20px;
-        }
-    }
-
-    img {
-        float: left;
-    }
-
-    .about {
-        float: left;
-        margin-top: 8px;
-    }
-
-    .about {
-        padding-left: 8px;
-    }
-
-    .status {
-        color: grey;
-    }
-
-}
-
-.chat {
-    width: 490px;
-    float: left;
-    background: #F2F5F8;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-
-    color: #434651;
-
-    .chat-header {
-        padding: 20px;
-        border-bottom: 2px solid white;
-
-        img {
-            float: left;
-        }
-
-        .chat-about {
-            float: left;
-            padding-left: 10px;
-            margin-top: 6px;
-        }
-
-        .chat-with {
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .chat-num-messages {
-            color: grey;
-        }
-
-        .fa-star {
-            float: right;
-            color: #D8DADF;
-            font-size: 20px;
-            margin-top: 12px;
-        }
-    }
-
-    .chat-history {
-        padding: 30px 30px 20px;
-        border-bottom: 2px solid white;
-        overflow-y: scroll;
-        height: 575px;
-
-        .message-data {
-            margin-bottom: 15px;
-        }
-
-        .message-data-time {
-            color: lighten(grey, 8%);
-            padding-left: 6px;
-        }
-
-        .message {
-            color: white;
-            padding: 18px 20px;
-            line-height: 26px;
-            font-size: 16px;
-            border-radius: 7px;
-            margin-bottom: 30px;
-            width: 90%;
-            position: relative;
-
-            &:after {
-                bottom: 100%;
-                left: 7%;
-                border: solid transparent;
-                content: " ";
-                height: 0;
-                width: 0;
-                position: absolute;
-                pointer-events: none;
-                border-bottom-color: green;
-                border-width: 10px;
-                margin-left: -10px;
-            }
-        }
-
-        .my-message {
-            background: green;
-        }
-
-        .other-message {
-            background: blue;
-
-            &:after {
-                border-bottom-color: blue;
-                left: 93%;
-            }
-        }
+.chat-input {
+    margin-top: 10px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding-top: 10px;
+    width: 610px;
+    height: 70px;
+    #message-to-send {
+        padding-top: 10px;
+        margin-left: -5px;
+        width: 470px;
+        height: 45px;
+        padding: 10px;
+        font: 14px/22px "Lato", Arial, sans-serif;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        resize: none;
 
     }
 
-    .chat-message {
-        padding: 30px;
+    .fa-file-o,
+    .fa-file-image-o {
+        font-size: 16px;
+        color: gray;
+        cursor: pointer;
 
-        textarea {
-            width: 100%;
-            border: none;
-            padding: 10px 20px;
-            font: 14px/22px "Lato", Arial, sans-serif;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            resize: none;
+    }
 
-        }
+    .submit {
+        color: #000;
+        margin-right: 10px;
+        width: 100px;
+        height: 40px;
+        margin-top: 22px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        float: right;
+        font-size: 16px;
+        text-transform: uppercase;
+        cursor: pointer;
+        background: #f3f3f3;
+        padding-right: 10px;
 
-        .fa-file-o,
-        .fa-file-image-o {
-            font-size: 16px;
-            color: gray;
-            cursor: pointer;
-
-        }
-
-        button {
-            float: right;
-            color: blue;
-            font-size: 16px;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            background: #F2F5F8;
-
-            &:hover {
-                color: darken(blue, 7%);
-            }
+        &:hover {
+            color: darken(blue, 7%);
         }
     }
 }
 
-.online,
-.offline,
-.me {
-    margin-right: 3px;
-    font-size: 10px;
-}
 
-.online {
-    color: green;
-}
+/* Reset some default styles */
 
-.offline {
-    color: orange;
-}
 
-.me {
-    color: blue;
-}
-
-.align-left {
-    text-align: left;
-}
-
-.align-right {
-    text-align: right;
-}
-
-.float-right {
-    float: right;
-}
-
-.clearfix:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
-}
-
-/* Footer Styles */
-footer {
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    font-size: 14px;
-    color: #fff;
-    /* Change the text color to improve visibility */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-
-    margin-top: -40px;
-    /* Adjust the negative margin value as needed */
-}

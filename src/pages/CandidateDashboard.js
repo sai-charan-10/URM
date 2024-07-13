@@ -42,10 +42,10 @@ function CandidateDashboard() {
                         // Update the state with updated jobs
                         setSavedjobs(updatedJobs);
                     } else {
-                        console.error(jobNamesResponse.data.message);
+                        console.log(jobNamesResponse.data.message);
                     }
                 } else {
-                    console.error(savedJobsResponse.data.message);
+                    console.log(savedJobsResponse.data.message);
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -79,10 +79,10 @@ function CandidateDashboard() {
                         // Update the state with updated jobs
                         setAppliedjobs(updatedJobs);
                     } else {
-                        console.error(jobNamesResponse.data.message);
+                        console.log(jobNamesResponse.data.message);
                     }
                 } else {
-                    console.error(appliedJobsResponse.data.message);
+                    console.log(appliedJobsResponse.data.message);
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -100,7 +100,7 @@ function CandidateDashboard() {
                     setPostedjobs(response.data.jobs);
                 } else {
                     // Handle the case where no job data is found or there's an error
-                    console.error(response.data.message);
+                    console.log(response.data.message);
                 }
             })
             .catch((error) => {

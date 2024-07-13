@@ -27,11 +27,11 @@ function CandidateJobSaved() {
                     setJobs(response.data.jobs);
                 } else {
                     // Handle the case where no job data is found or there's an error
-                    console.error(response.data.message);
+                    alert(response.data.message);
                 }
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.log('Error:', error);
             });
     }, []);
     //handle Apply
@@ -51,11 +51,11 @@ function CandidateJobSaved() {
                     alert('Job Applied Successfully');
                 } else {
                     // Handle the case where no job data is found or there's an error
-                    console.error(response.data.message);
+                    alert(response.data.message);
                 }
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.log('Error:', error);
             });
     };
 
@@ -94,7 +94,7 @@ function CandidateJobSaved() {
                                         <td>{job.status}</td>
                                         <td>
                                             <div className="job-actions">
-                                                <button type="button" onClick={() => handleApply(job.JobID, userID)}>Apply</button>
+                                                <button type="button" onClick={() => handleApply(job.positionID, userID)}>Apply</button>
                                             </div>
                                         </td>
                                     </tr>

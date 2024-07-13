@@ -23,7 +23,7 @@ function CandidateJobSearch() {
                     setJobs(response.data.jobs);
                 } else {
                     // Handle the case where no job data is found or there's an error
-                    console.error(response.data.message);
+                    console.log(response.data.message);
                 }
             })
             .catch((error) => {
