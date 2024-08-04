@@ -1,12 +1,12 @@
-###Underrepresented Minority Career Search Website
+#Underrepresented Minority Career Search Website
 ##Overview
 The Underrepresented Minority Career Search Website is a specialized platform designed to connect talented individuals from underrepresented communities with educational institutions. The website facilitates seamless interactions between users and institutions, helping users find relevant educational opportunities and manage their profiles effectively.
 
 ##Technologies Used
 #Frontend
-React.js: Utilized for building a dynamic and responsive user interface. Implemented hooks and Context API for state management and React Router for client-side routing and navigation.
+React.js: Utilized to build a dynamic and responsive user interface and implemented hooks and Context API for state management and React Router for client-side routing and navigation.
 Axios: Used for making HTTP requests to interact with backend services, enabling real-time data fetching and updates.
-Responsive Web Design: Applied to ensure compatibility across various devices and screen sizes, ensuring a smooth user experience on both mobile and desktop devices.
+Responsive Web Design: Applied to ensure compatibility across various devices and screen sizes, ensuring a smooth user experience on mobile and desktop devices.
 
 #Backend
 RESTful APIs: Developed to handle server-side logic, including user authentication and secure data transactions.
